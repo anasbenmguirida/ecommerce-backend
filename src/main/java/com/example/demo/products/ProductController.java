@@ -28,4 +28,9 @@ public class ProductController {
         return this.ps.saveProduct(product);
     }
 
+    @DeleteMapping("/delete-product/{id}")
+    public String deleteProduct(@PathVariable int id) {
+        return this.ps.deleteProduct(id);
+    }
+
 }
