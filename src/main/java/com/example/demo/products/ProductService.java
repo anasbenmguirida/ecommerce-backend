@@ -22,8 +22,8 @@ public class ProductService {
         return this.pr.findAll();
     }
 
-    public String deleteProduct(int id) {
-        this.pr.deleteById(id);
+    public String deleteProduct(Product p) {
+        this.pr.delete(p);
         return "product deleted succesfully";
     }
 
