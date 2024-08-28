@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping(path = "api")
@@ -31,6 +33,11 @@ public class ProductController {
     @DeleteMapping("/delete-product/{id}")
     public String deleteProduct(@PathVariable int id) {
         return this.ps.deleteProduct(id);
+    }
+
+    @PostMapping("/edit-product")
+    public String editProduct(@RequestBody Product p) {
+        return this.ps.editProduct(p);
     }
 
 }
