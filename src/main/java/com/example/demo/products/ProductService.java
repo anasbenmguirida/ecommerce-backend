@@ -1,15 +1,12 @@
 package com.example.demo.products;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-import jakarta.transaction.Transactional;
-
+import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -20,7 +17,8 @@ public class ProductService {
         this.pr = pr;
     }
 
-    public String saveProduct(Product p) {
+    public String saveProduct(Product p, MultipartFile file) throws IOException {
+        p.setImagePath(file.getBytes());
         this.pr.save(p);
         return "product saved succesfully";
     }
