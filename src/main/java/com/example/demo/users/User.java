@@ -21,8 +21,9 @@ public class User {
     private String password;
     private String role;
     private String address;
-    @Enumerated(EnumType.STRING)
-    private Role role2;
+    private String phone;
+    // @Enumerated(EnumType.STRING)
+    // private Role role2;
 
     /*
      * @Override
@@ -59,19 +60,21 @@ public class User {
     public User() {
     }
 
-    public User(int id, String n, String e, String r, String a) {
+    public User(int id, String n, String e, String r, String a, String p) {
         this.id = id;
         this.name = n;
         this.email = e;
         this.address = a;
-        this.role = r;
+        this.role = "user";
+        this.phone = p;
     }
 
-    public User(String n, String e, String r, String a) {
+    public User(String n, String e, String r, String a, String p) {
         this.name = n;
         this.email = e;
         this.address = a;
-        this.role = r;
+        this.role = "user";
+        this.phone = p;
     }
 
     public int getId() {
@@ -101,6 +104,14 @@ public class User {
     }
 
     // Getter and Setter for password
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String p) {
+        this.phone = p;
+    }
+
     public String getPassword() {
         return password;
     }
