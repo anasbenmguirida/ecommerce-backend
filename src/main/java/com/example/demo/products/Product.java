@@ -13,27 +13,25 @@ public class Product {
     private String description;
     private int quantity;
     private double price;
-    @Lob
-    private byte[] imagePath;
 
     public Product() {
     }
 
-    public Product(int id, String n, String d, int q, double p, byte[] image) {
+    public Product(int id, String n, String d, int q, double p) {
         this.id = id;
         this.name = n;
         this.description = d;
         this.quantity = q;
         this.price = p;
-        this.imagePath = image;
+
     }
 
-    public Product(String n, String d, int q, double p, byte[] image) {
+    public Product(String n, String d, int q, double p) {
         this.name = n;
         this.description = d;
         this.quantity = q;
         this.price = p;
-        this.imagePath = image;
+
     }
 
     public int getId() {
@@ -80,14 +78,6 @@ public class Product {
         this.price = p;
     }
 
-    public byte[] getimagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(byte[] imagePath) {
-        this.imagePath = imagePath;
-    }
-
     @Override
     public String toString() {
         return "Product{" +
@@ -96,7 +86,7 @@ public class Product {
                 ", description='" + description + '\'' +
                 ", quantity='" + quantity + '\'' +
                 ", price='" + price + '\'' +
-                ", imagePath='" + imagePath + '\'' +
+
                 '}';
     }
 }

@@ -18,7 +18,7 @@ public class ProductService {
     }
 
     public String saveProduct(Product p, MultipartFile file) throws IOException {
-        p.setImagePath(file.getBytes());
+
         this.pr.save(p);
         return "product saved succesfully";
     }
