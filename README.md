@@ -19,3 +19,9 @@ I'm a CS student at the NATIONAL SCHOOL OF APPLIED SCIENCE in Tangier , Morocco
 
 ## Important Link
 This is the link to the frontend  repository : https://github.com/anasbenmguirida/ecommerce-front  
+
+
+## Helpful
+For Learning Java : https://roadmap.sh/java
+For Spring/Spring boot : https://roadmap.sh/spring-boot
+For undestanding JWT in general : https://github.com/jwtk/jjwt#jws-create-key 
