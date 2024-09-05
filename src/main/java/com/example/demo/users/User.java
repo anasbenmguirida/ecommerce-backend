@@ -8,7 +8,14 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 
+@Data
+
+@AllArgsConstructor
+@Builder
 @Entity
 @Table
 
@@ -64,7 +71,7 @@ public class User implements UserDetails {
         this.name = n;
         this.email = e;
         this.address = a;
-        this.role = "user";
+        this.role = r;
         this.phone = p;
     }
 
@@ -72,7 +79,7 @@ public class User implements UserDetails {
         this.name = n;
         this.email = e;
         this.address = a;
-        this.role = "user";
+        this.role = r;
         this.phone = p;
     }
 
@@ -124,8 +131,8 @@ public class User implements UserDetails {
         return role;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRole() {
+        this.role = "user";
     }
 
     // Getter and Setter for address

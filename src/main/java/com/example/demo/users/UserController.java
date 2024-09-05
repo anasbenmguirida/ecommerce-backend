@@ -24,8 +24,10 @@ public class UserController {
 
     }
 
-    @PostMapping("/register")
-    public String saveUser(@RequestBody User user) {
-        return this.us.saveUser(user);
-    }
+    /*
+     * @PostMapping("/register")
+     * public String saveUser(@RequestBody User user) {
+     * return this.us.saveUser(user);
+     * }
+     */
 }
