@@ -28,8 +28,17 @@ public class ProductController {
     }
 
     @PostMapping("/save-product")
-    public ResponseEntity<String> addProduct(@RequestBody Product product) {
-
+    public ResponseEntity<String> addProduct(@RequestParam("name") String name,
+            @RequestParam("description") String description,
+            @RequestParam("quantity") int quantity,
+            @RequestParam("price") double price,
+            @RequestParam("image") MultipartFile image) throws IOException {
+        Product product = new Product();
+        product.setName(name);
+        product.setDescription(description);
+        product.setQuantity(quantity);
+        product.setPrice(price);
+        product.setImage(image.getBytes());
         ps.saveProduct(product);
         return ResponseEntity.ok("product saved ");
     }

@@ -1,5 +1,9 @@
 package com.example.demo.products;
 
+
+
+import org.hibernate.annotations.Type;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,8 +23,8 @@ public class Product {
     private String description;
     private int quantity;
     private double price;
-
     @Lob
+   
     private byte[] image;
 
     public Product() {
@@ -83,7 +87,7 @@ public class Product {
         return price;
     }
 
-    public void setprice(double p) {
+    public void setPrice(double p) {
         this.price = p;
     }
 
