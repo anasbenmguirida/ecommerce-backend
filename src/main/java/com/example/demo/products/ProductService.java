@@ -17,7 +17,7 @@ public class ProductService {
         this.pr = pr;
     }
 
-    public String saveProduct(Product p, MultipartFile file) throws IOException {
+    public String saveProduct(Product p) {
 
         this.pr.save(p);
         return "product saved succesfully";

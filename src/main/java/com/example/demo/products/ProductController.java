@@ -3,7 +3,9 @@ package com.example.demo.products;
 import java.io.IOException;
 import java.util.List;
 
+import org.apache.tomcat.util.http.parser.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,14 +28,10 @@ public class ProductController {
     }
 
     @PostMapping("/save-product")
-    public String saveProduct(@RequestBody Product product, MultipartFile file) {
-        try {
-            return this.ps.saveProduct(product, file);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return "error";
-        }
+    public ResponseEntity<String> addProduct(@RequestBody Product product) {
 
+        ps.saveProduct(product);
+        return ResponseEntity.ok("product saved ");
     }
 
     @DeleteMapping("/delete-product/{id}")

@@ -1,9 +1,15 @@
 package com.example.demo.products;
 
-import jakarta.persistence.*;;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;;
 
 @Entity
 @Table
+@Data
+@AllArgsConstructor
+@Builder
 
 public class Product {
     @Id
@@ -13,6 +19,9 @@ public class Product {
     private String description;
     private int quantity;
     private double price;
+
+    @Lob
+    private byte[] image;
 
     public Product() {
     }
