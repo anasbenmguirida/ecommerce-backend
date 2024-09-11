@@ -29,7 +29,7 @@ public class SecurityConfig {
                                 .csrf(csrf -> csrf
                                                 .disable())
                                 .authorizeRequests(requests -> requests
-                                                .requestMatchers("/", "/api/save-product", "/api/products",
+                                                .requestMatchers("/", "/api/products",
                                                                 "/api/login", "/api/register")
                                                 .permitAll()
                                                 .anyRequest()

@@ -60,7 +60,7 @@ public class JwtService {
         return extractClaim(token, Claims::getExpiration);
     }
 
-    private Claims extractAllClaims(String token) { // lpayload kaml
+    public Claims extractAllClaims(String token) { // lpayload kaml
         return Jwts
                 .parserBuilder()
                 .setSigningKey(getSignInKey())

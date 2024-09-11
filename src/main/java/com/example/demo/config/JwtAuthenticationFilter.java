@@ -34,6 +34,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         final String AuthenticationHeader = request.getHeader("Authorization");
         final String JWTtoken;
         final String email;
+        System.out.println(AuthenticationHeader);
         if (AuthenticationHeader == null || !AuthenticationHeader.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
             return;
@@ -41,6 +42,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         // extracting the JWT from the request
         JWTtoken = AuthenticationHeader.substring(7); // 7seb bearer + space ?
         // extract the email from the JWT token
+        System.out.println(JWTtoken);
         email = jwtservice.extractEmail(JWTtoken);
         if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = this.userDetailsSercice.loadUserByUsername(email);
