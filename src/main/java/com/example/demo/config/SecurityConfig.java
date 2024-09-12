@@ -30,7 +30,7 @@ public class SecurityConfig {
                                                 .disable())
                                 .authorizeRequests(requests -> requests
                                                 .requestMatchers("/", "/api/products",
-                                                                "/api/login", "/api/register")
+                                                                "/api/send-email", "/api/login", "/api/register")
                                                 .permitAll()
                                                 .anyRequest()
                                                 .authenticated())
