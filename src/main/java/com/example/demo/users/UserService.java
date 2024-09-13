@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -22,6 +23,10 @@ public class UserService {
 
     public List<User> getUsers() {
         return ur.findAll();
+    }
+
+    public Optional<User> getUser(String email) {
+        return ur.findByEmail(email);
     }
 
 }
