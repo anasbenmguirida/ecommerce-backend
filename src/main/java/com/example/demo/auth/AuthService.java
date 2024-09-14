@@ -6,6 +6,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.config.JwtService;
+import com.example.demo.users.Role;
 import com.example.demo.users.User;
 import com.example.demo.users.UserRepository;
 
@@ -25,6 +26,7 @@ public class AuthService {
                                 .email(request.getEmail())
                                 .address(request.getAddress())
                                 .phone(request.getPhone())
+                                .role(Role.user)
                                 .build();
                 var savedUser = userRepository.save(user);
                 var jwtToken = jwtService.generateToken(user);

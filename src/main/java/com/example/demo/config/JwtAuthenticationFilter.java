@@ -34,13 +34,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         final String AuthenticationHeader = request.getHeader("Authorization");
         final String JWTtoken;
         final String email;
-        System.out.println(AuthenticationHeader);
+        System.out.println("authenticaion header :   " + AuthenticationHeader);
         if (AuthenticationHeader == null || !AuthenticationHeader.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
             return;
         }
         // extracting the JWT from the request
         JWTtoken = AuthenticationHeader.substring(7); // 7seb bearer + space ?
+        System.out.println("The jwt token extracted :  " + JWTtoken);
         // extract the email from the JWT token
         System.out.println(JWTtoken);
         email = jwtservice.extractEmail(JWTtoken);

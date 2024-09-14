@@ -26,15 +26,14 @@ public class User implements UserDetails {
     private String name;
     private String email;
     private String password;
-    private String role;
     private String address;
     private String phone;
     @Enumerated(EnumType.STRING)
-    private Role role2;
+    private Role role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role2.name()));
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
     @Override
@@ -44,18 +43,18 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
 
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
@@ -71,15 +70,13 @@ public class User implements UserDetails {
         this.name = n;
         this.email = e;
         this.address = a;
-        this.role = r;
         this.phone = p;
     }
 
-    public User(String n, String e, String r, String a, String p) {
+    public User(String n, String e, String a, String p) {
         this.name = n;
         this.email = e;
         this.address = a;
-        this.role = r;
         this.phone = p;
     }
 
@@ -124,15 +121,6 @@ public class User implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    // Getter and Setter for role
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole() {
-        this.role = "user";
     }
 
     // Getter and Setter for address
