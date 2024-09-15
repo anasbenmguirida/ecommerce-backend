@@ -9,9 +9,11 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.commande.Commande;
+import com.example.demo.commande.CommandeService;
 import com.example.demo.users.User;
 import com.example.demo.users.UserRepository;
 import com.example.demo.users.UserService;
+import java.util.Random;
 
 import jakarta.websocket.ClientEndpointConfig.Builder;
 import lombok.AllArgsConstructor;
@@ -22,7 +24,7 @@ import lombok.NoArgsConstructor;
 public class EmailService implements EmailInterface {
 
     private final JavaMailSender javaMailSender;
-    private final UserService userService;
+    private final CommandeService commandeService;
     private final UserRepository userRepository;
 
     public String sendSimpleEmail(EmailDetails emailDetails) {
@@ -38,11 +40,15 @@ public class EmailService implements EmailInterface {
             System.out.println(mailMessage);
             javaMailSender.send(mailMessage);
             int userId = this.userRepository.findUserIdByEmail(emailDetails.getRecipient());
-            Commande commande = Commande.builder()
-                    .userID(userId)
-                    .build()
+            // generate a random value for the commande's id
+            Random rand = new Random();
+            int random = rand.nextInt(10000);
 
-            ;
+            Commande commande = new Commande(random, userId);
+
+            this.commandeService.saveCommande(commande);
+            System.out.println("*********the commande************** : " + commande);
+
             return "Mail Sent Successfully...";
 
         } catch (Exception e) {
