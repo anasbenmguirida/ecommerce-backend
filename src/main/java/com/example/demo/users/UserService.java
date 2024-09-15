@@ -1,6 +1,8 @@
 package com.example.demo.users;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -23,10 +25,6 @@ public class UserService {
 
     public List<User> getUsers() {
         return ur.findAll();
-    }
-
-    public Optional<User> getUser(String email) {
-        return ur.findByEmail(email);
     }
 
 }

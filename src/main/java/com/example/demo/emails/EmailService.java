@@ -3,22 +3,26 @@ package com.example.demo.emails;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.commande.Commande;
 import com.example.demo.users.User;
 import com.example.demo.users.UserRepository;
+import com.example.demo.users.UserService;
 
+import jakarta.websocket.ClientEndpointConfig.Builder;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.Value;
 
 @AllArgsConstructor
 @Service
 public class EmailService implements EmailInterface {
 
     private final JavaMailSender javaMailSender;
+    private final UserService userService;
     private final UserRepository userRepository;
 
     public String sendSimpleEmail(EmailDetails emailDetails) {
@@ -33,7 +37,14 @@ public class EmailService implements EmailInterface {
             // Sending the mail
             System.out.println(mailMessage);
             javaMailSender.send(mailMessage);
+            int userId = this.userRepository.findUserIdByEmail(emailDetails.getRecipient());
+            Commande commande = Commande.builder()
+                    .userID(userId)
+                    .build()
+
+            ;
             return "Mail Sent Successfully...";
+
         } catch (Exception e) {
             return "Error while Sending Mail : " + e;
         }
