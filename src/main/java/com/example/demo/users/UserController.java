@@ -1,5 +1,6 @@
 package com.example.demo.users;
 
+import java.util.Optional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +22,11 @@ public class UserController {
     @GetMapping("/users")
     public List<User> getUsers() {
         return this.us.getUsers();
+    }
 
+    @GetMapping("/user-info")
+    public Optional<User> getUserById(@RequestBody int id) {
+        return this.us.getUserById(id);
     }
 
 }

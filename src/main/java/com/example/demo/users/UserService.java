@@ -27,4 +27,8 @@ public class UserService {
         return ur.findAll();
     }
 
+    public Optional<User> getUserById(int id) {
+        return this.ur.getUserById(id);
+    }
+
 }

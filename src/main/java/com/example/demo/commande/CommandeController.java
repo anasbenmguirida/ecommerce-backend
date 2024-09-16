@@ -16,7 +16,7 @@ public class CommandeController {
     @Autowired
     private CommandeService commandeService;
 
-    @GetMapping("/commandes")
+    @GetMapping("/api/commandes")
     public List<Commande> getAllCommandes() {
         return this.commandeService.getCommandes();
     }
