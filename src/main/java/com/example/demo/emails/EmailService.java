@@ -39,15 +39,6 @@ public class EmailService implements EmailInterface {
             // Sending the mail
             System.out.println(mailMessage);
             javaMailSender.send(mailMessage);
-            int userId = this.userRepository.findUserIdByEmail(emailDetails.getRecipient());
-            // generate a random value for the commande's id
-            Random rand = new Random();
-            int random = rand.nextInt(10000);
-
-            Commande commande = new Commande(random, userId);
-
-            this.commandeService.saveCommande(commande);
-            System.out.println("*********the commande************** : " + commande);
 
             return "Mail Sent Successfully...";
 

@@ -3,9 +3,11 @@ package com.example.demo.users;
 import java.util.Optional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
@@ -24,8 +26,13 @@ public class UserController {
         return this.us.getUsers();
     }
 
-    @GetMapping("/user-info")
-    public Optional<User> getUserById(@RequestBody int id) {
+    @PostMapping("/save-commande")
+    public String saveUserCommande(@RequestBody String email) {
+        return this.us.saveUserCommande(email);
+    }
+
+    @GetMapping("/user-info/{id}")
+    public Optional<User> getUserById(@PathVariable int id) {
         return this.us.getUserById(id);
     }
 
