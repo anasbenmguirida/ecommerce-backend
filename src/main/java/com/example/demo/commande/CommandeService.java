@@ -27,11 +27,21 @@ public class CommandeService {
 
     public void commandePeople() {
         List<Commande> listeCommande = this.getCommandes();
-        List<String> listeEmails;
+        List<User> listUsers;
         for (Commande commande : listeCommande) {
-            Optional<User> user = this.userRepository.findById(commande.getUserID());
-            System.out.println("User : " + user);
-
+            // geting every user details by id => commande.getUserId
+            int currentUserId = commande.getUserID();
+            System.out.println("print this : " + this.userRepository.findById(currentUserId));
+            /*
+             * Optional<User> user = this.userRepository.findById(commande.getUserID());
+             * if (user.isPresent()) {
+             * User user1 = user.get();
+             * // add the user to the list
+             * System.out.println("user details : " + user1);
+             * } else {
+             * System.out.println("user not found ");
+             * }
+             */
         }
     }
 }
