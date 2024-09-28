@@ -27,7 +27,7 @@ public class UserController {
     }
 
     @PostMapping("/save-commande")
-    public String saveUserCommande(@RequestBody String email) {
+    public String saveUserCommande(@RequestParam String email) {
         return this.us.saveUserCommande(email);
     }
 

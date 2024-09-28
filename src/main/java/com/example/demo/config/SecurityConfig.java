@@ -30,7 +30,9 @@ public class SecurityConfig {
                                                 .disable())
                                 .authorizeRequests(requests -> requests
                                                 .requestMatchers("/", "/api/products",
-                                                                "/api/save-commande", "/api/login", "/api/register")
+                                                                "/api/commandes", "/api/people-commandes",
+                                                                "/api/save-commande", "/api/login",
+                                                                "/api/register")
                                                 .permitAll()
                                                 .anyRequest()
                                                 .authenticated())

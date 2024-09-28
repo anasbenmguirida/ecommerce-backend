@@ -29,16 +29,12 @@ public class UserService {
     }
 
     public String saveUserCommande(String email) {
-
-        Optional<User> user = ur.findByEmail(email);
-        System.out.println(" the user : " + user);
-        /*
-         * Commande commande = new Commande(101, 1);
-         * this.cs.saveCommande(commande);
-         * System.out.println("*********the commande************** : " + commande);
-         */
-        return "commande deatils saved succesfully ";
-
+        // save user'id and generate new Commande
+        int userID = ur.findUserIdByEmail(email);
+        System.out.println("user" + userID);
+        Commande commande = new Commande(101, userID);
+        cs.saveCommande(commande);
+        return "commande saved succesfully";
     }
 
     public List<User> getUsers() {

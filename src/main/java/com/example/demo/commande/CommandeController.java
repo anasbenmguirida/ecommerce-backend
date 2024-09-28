@@ -21,4 +21,9 @@ public class CommandeController {
         return this.commandeService.getCommandes();
     }
 
+    @GetMapping("/api/people-commandes")
+    public void commandePeople() {
+        this.commandeService.commandePeople();
+    }
+
 }
