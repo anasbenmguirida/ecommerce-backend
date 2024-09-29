@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.tomcat.util.http.parser.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,19 +29,14 @@ public class ProductController {
     }
 
     @PostMapping("/save-product")
-    public ResponseEntity<String> addProduct(@RequestParam("name") String name,
+    public ResponseEntity<Product> addProduct(
+            @RequestParam("name") String name,
             @RequestParam("description") String description,
             @RequestParam("quantity") int quantity,
             @RequestParam("price") double price,
-            @RequestParam("image") MultipartFile image) throws IOException {
-        Product product = new Product();
-        product.setName(name);
-        product.setDescription(description);
-        product.setQuantity(quantity);
-        product.setPrice(price);
-        product.setImage(image.getBytes());
-        ps.saveProduct(product);
-        return ResponseEntity.ok("product saved ");
+            @RequestParam("image") MultipartFile imageFile) throws IOException {
+        Product product = ps.saveProduct(name, description, quantity, price, imageFile);
+        return new ResponseEntity<>(product, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete-product/{id}")

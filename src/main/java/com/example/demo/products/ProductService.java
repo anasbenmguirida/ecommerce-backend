@@ -17,10 +17,16 @@ public class ProductService {
         this.pr = pr;
     }
 
-    public String saveProduct(Product p) {
+    public Product saveProduct(String name, String description, int quantity, double price, MultipartFile imageFile)
+            throws IOException {
+        Product product = new Product();
+        product.setName(name);
+        product.setDescription(description);
+        product.setQuantity(quantity);
+        product.setPrice(price);
+        product.setImage(imageFile.getBytes()); // Convert the image to byte[]
 
-        this.pr.save(p);
-        return "product saved succesfully";
+        return pr.save(product);
     }
 
     public List<Product> getProducts() {
