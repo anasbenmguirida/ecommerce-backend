@@ -33,7 +33,8 @@ public class SecurityConfig {
                                                                 "/api/commandes", "/api/save-product",
                                                                 "/api/people-commandes",
                                                                 "/api/save-commande", "/api/login",
-                                                                "/api/register")
+                                                                "/api/register" ,
+                                                                "/api/user-info/{id}")
                                                 .permitAll()
                                                 .anyRequest()
                                                 .authenticated())

@@ -5,7 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.users.UserService;
 
 import lombok.AllArgsConstructor;
 
@@ -15,6 +19,7 @@ import lombok.AllArgsConstructor;
 public class CommandeController {
     @Autowired
     private CommandeService commandeService;
+    private UserService userService ; 
 
     @GetMapping("/api/commandes")
     public List<Commande> getAllCommandes() {
@@ -25,5 +30,12 @@ public class CommandeController {
     public void commandePeople() {
         this.commandeService.commandePeople();
     }
+    /* 
+    @PostMapping("/api/save-commande")
+    public String  saveCommande(@RequestBody String email) {
+    return this.userService.saveUserCommande(email) ; 
+    }
+    */
+
 
 }

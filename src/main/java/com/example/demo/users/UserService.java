@@ -41,8 +41,10 @@ public class UserService {
         return ur.findAll();
     }
 
-    public Optional<User> getUserById(int id) {
-        return this.ur.findById(id);
+    public String getUserById(int id) {
+        Optional<User> user = this.ur.findById(id);
+        return "user : "+ user ; 
+
     }
 
 }
