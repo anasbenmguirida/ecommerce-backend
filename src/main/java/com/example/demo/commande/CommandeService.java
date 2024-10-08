@@ -1,7 +1,9 @@
 package com.example.demo.commande;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,10 @@ public class CommandeService {
     @Autowired
     private CommandeRepository commandeRepository;
     private UserRepository userRepository;
+    
+    public  CommandeService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public String saveCommande(Commande commande) {
         this.commandeRepository.save(commande);
@@ -25,23 +31,21 @@ public class CommandeService {
         return this.commandeRepository.findAll();
     }
 
-    public void commandePeople() {
+    public ArrayList<User> commandePeople() {
         List<Commande> listeCommande = this.getCommandes();
-        List<User> listUsers;
-        for (Commande commande : listeCommande) {
-            // geting every user details by id => commande.getUserId
-            int currentUserId = commande.getUserID();
-            System.out.println("print this : " + this.userRepository.findById(currentUserId));
-            /*
-             * Optional<User> user = this.userRepository.findById(commande.getUserID());
-             * if (user.isPresent()) {
-             * User user1 = user.get();
-             * // add the user to the list
-             * System.out.println("user details : " + user1);
-             * } else {
-             * System.out.println("user not found ");
-             * }
-             */
-        }
-    }
+        ArrayList<User> listUsers = new ArrayList<User>();
+        List<Integer> userIds = listeCommande.stream()
+                .map(Commande::getUserID)
+                .collect(Collectors.toList());
+        
+        List<User> users = this.userRepository.findAllById(userIds);
+        listUsers.addAll(users);
+        
+        return listUsers;
 }
+        
+            
+             
+        
+    }
+

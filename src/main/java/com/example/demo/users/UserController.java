@@ -26,10 +26,7 @@ public class UserController {
         return this.us.getUsers();
     }
 
-    @PostMapping("/save-commande")
-    public String saveUserCommande(@RequestParam String email) {
-        return this.us.saveUserCommande(email);
-    }
+   
 
     @GetMapping("/user-info/{id}")
     public String getUserById(@PathVariable int id) {

@@ -1,14 +1,17 @@
 package com.example.demo.commande;
 
-import java.util.List;
+import java.util.ArrayList;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.users.User;
 import com.example.demo.users.UserService;
 
 import lombok.AllArgsConstructor;
@@ -27,15 +30,16 @@ public class CommandeController {
     }
 
     @GetMapping("/api/people-commandes")
-    public void commandePeople() {
-        this.commandeService.commandePeople();
+    public ArrayList<User> commandePeople() {
+        return this.commandeService.commandePeople();
     }
-    /* 
+    
+    
     @PostMapping("/api/save-commande")
-    public String  saveCommande(@RequestBody String email) {
+    public String  saveCommande(@RequestParam String email) {
     return this.userService.saveUserCommande(email) ; 
     }
-    */
+    
 
 
 }
