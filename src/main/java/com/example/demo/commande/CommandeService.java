@@ -37,12 +37,12 @@ public class CommandeService {
         List<Integer> userIds = listeCommande.stream()
                 .map(Commande::getUserID)
                 .collect(Collectors.toList());
-        
         List<User> users = this.userRepository.findAllById(userIds);
         listUsers.addAll(users);
-        
         return listUsers;
 }
+
+   
         
             
              
