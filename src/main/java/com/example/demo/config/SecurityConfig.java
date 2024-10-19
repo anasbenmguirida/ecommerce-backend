@@ -30,13 +30,14 @@ public class SecurityConfig {
                                                 .disable())
                                 .authorizeRequests(requests -> requests
                                                 .requestMatchers("/", "/api/products",
-                                                                "/api/commandes", "/api/save-product",
-                                                                "/api/people-commandes",
-                                                                "/api/save-commande", "/api/login",
+                                                                 "/api/save-product",
+                                                                "/api/get-commandes",
+                                                                "/api/get-commande/{id}", "/api/login",
                                                                 "/api/register" ,
                                                                 "/api/user-info/{id}",
                                                                 "/api/save-details",
-                                                                "/api/send-email")
+                                                                "/api/send-email",
+                                                                "/api/info")
                                                 .permitAll()
                                                 .anyRequest()
                                                 .authenticated())

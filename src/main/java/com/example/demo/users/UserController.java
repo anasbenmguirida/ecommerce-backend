@@ -32,5 +32,10 @@ public class UserController {
     public String getUserById(@PathVariable int id) {
         return this.us.getUserById(id);
     }
+    @GetMapping("/info")
+        public int getUserInfo(@RequestParam String email) {
+            return this.us.getUser(email) ; 
+
+    }
 
 }

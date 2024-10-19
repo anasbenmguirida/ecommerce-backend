@@ -6,8 +6,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.example.demo.commande.Commande;
-import com.example.demo.commande.CommandeService;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -15,12 +14,15 @@ import java.util.Optional;
 @Service
 public class UserService {
     private final UserRepository ur;
-    private final CommandeService cs;
+   
 
     @Autowired
-    public UserService(UserRepository ur, CommandeService commandeService) {
+    public UserService(UserRepository ur) {
         this.ur = ur;
-        this.cs = commandeService;
+        
+    }
+    public int getUser(String email){
+        return this.ur.findUserIdByEmail(email) ; 
     }
 
     public String saveUser(User user) {
@@ -28,14 +30,7 @@ public class UserService {
         return "User saved succesfully";
     }
 
-    public String saveUserCommande(String email) {
-        // save user'id and generate new Commande
-        int userID = ur.findUserIdByEmail(email);
-        System.out.println("user" + userID);
-        Commande commande = new Commande(101, userID);
-        cs.saveCommande(commande);
-        return "commande saved succesfully";
-    }
+   
 
     public List<User> getUsers() {
         return ur.findAll();

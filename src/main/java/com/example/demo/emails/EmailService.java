@@ -8,8 +8,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.commande.Commande;
-import com.example.demo.commande.CommandeService;
+
 import com.example.demo.users.User;
 import com.example.demo.users.UserRepository;
 import com.example.demo.users.UserService;
@@ -24,7 +23,6 @@ import lombok.NoArgsConstructor;
 public class EmailService implements EmailInterface {
 
     private final JavaMailSender javaMailSender;
-    private final CommandeService commandeService;
     private final UserRepository userRepository;
 
     public String sendSimpleEmail(EmailDetails emailDetails) {

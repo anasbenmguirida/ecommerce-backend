@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.commande.Commande;
-import com.example.demo.commande.CommandeService;
+
 import com.example.demo.users.UserRepository;
 
 import io.jsonwebtoken.Claims;
