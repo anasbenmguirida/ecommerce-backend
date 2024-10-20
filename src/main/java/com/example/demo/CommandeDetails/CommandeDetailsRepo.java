@@ -9,4 +9,7 @@ import java.util.List;
 public interface CommandeDetailsRepo extends JpaRepository<CommandeDetails , Integer> {
     @Query(value = "SELECT * FROM commande_details WHERE user_id = :idUser ", nativeQuery = true)
     List<CommandeDetails> findCommandeDetailsByUserId(@Param("idUser") int id) ; 
+
+    @Query(value = "SELECT * FROM commande_details GROUP BY user_id  ", nativeQuery = true)
+    List<CommandeDetails> getAllCommandeDetails() ; 
 }

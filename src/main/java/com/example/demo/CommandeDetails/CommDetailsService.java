@@ -28,9 +28,9 @@ public class CommDetailsService {
         return "Commande saved succesfully : " + commandeDetails ;
     }
     
-    // f dashboard dial admin 
+    // f dashboard dial admin group by the id !!!!!! 
     public List<CommandeDetails> getCommandes(){
-        return this.commandeDetailsRepo.findAll() ; 
+        return this.commandeDetailsRepo.getAllCommandeDetails(); 
     }
     // les commandes dial wa7d l user specific
     public List<CommandeDetails> getUserCommandes(int id){

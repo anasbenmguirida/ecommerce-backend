@@ -29,7 +29,7 @@ public class UserController {
    
 
     @GetMapping("/user-info/{id}")
-    public String getUserById(@PathVariable int id) {
+    public Optional<User> getUserById(@PathVariable int id) {
         return this.us.getUserById(id);
     }
     @GetMapping("/info")

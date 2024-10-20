@@ -36,9 +36,9 @@ public class UserService {
         return ur.findAll();
     }
 
-    public String getUserById(int id) {
+    public Optional<User> getUserById(int id) {
         Optional<User> user = this.ur.findById(id);
-        return "user : "+ user ; 
+        return  user ; 
 
     }
 
