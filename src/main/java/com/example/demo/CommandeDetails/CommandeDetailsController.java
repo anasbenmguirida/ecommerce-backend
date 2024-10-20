@@ -30,6 +30,14 @@ public class CommandeDetailsController {
     public List< CommandeDetails> getCommande(@PathVariable int id) {
         return this.commDetailsService.getUserCommandes(id) ;
     }
+    @PostMapping("/api/change-state-app/{id}")
+    public String changeStateToApproved(@PathVariable int id ){
+        return this.commDetailsService.approveCommande(id) ; 
+    }
+    @PostMapping("/api/change-state-can/{id}")
+    public String changeStateToCanceled(@PathVariable int id ){
+        return this.commDetailsService.approveCommande(id) ; 
+    }
 
 
 }

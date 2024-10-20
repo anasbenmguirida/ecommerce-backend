@@ -23,6 +23,7 @@ public class CommDetailsService {
         commandeDetails2.setQuantity(commandeDetails2.getQuantity());
         commandeDetails2.setUserId(commandeDetails2.getUserId());
         commandeDetails2.setProductId(commandeDetails2.getProductId()); 
+        commandeDetails2.setState(CommandeState.PENDING);
         this.commandeDetailsRepo.save(commandeDetails2) ; 
         }
         return "Commande saved succesfully : " + commandeDetails ;
@@ -35,6 +36,34 @@ public class CommDetailsService {
     // les commandes dial wa7d l user specific
     public List<CommandeDetails> getUserCommandes(int id){
         return this.commandeDetailsRepo.findCommandeDetailsByUserId(id)  ; 
+    }
+    public String approveCommande(int id){
+       Optional<CommandeDetails> commandeDetails= this.commandeDetailsRepo.findById(id) ; 
+       if(commandeDetails.isPresent()){
+            // cast the type
+            CommandeDetails commandeDetails2 = commandeDetails.get() ;
+            commandeDetails2.setState(CommandeState.APPROVED) ; 
+            this.commandeDetailsRepo.save(commandeDetails2) ; 
+            return "process ended succesfully" ; 
+        }
+       else{
+        return "error" ; 
+       }
+        
+    }
+
+    public String cancelCommande(int id ){
+        Optional<CommandeDetails> commandeDetails= this.commandeDetailsRepo.findById(id) ; 
+        if(commandeDetails.isPresent()){
+            // cast the type
+            CommandeDetails commandeDetails2 = commandeDetails.get() ;
+            commandeDetails2.setState(CommandeState.CANCELED) ; 
+            this.commandeDetailsRepo.save(commandeDetails2) ; 
+            return "process ended succesfully" ; 
+        }
+       else{
+        return "error" ; 
+       }
     }
 
 }

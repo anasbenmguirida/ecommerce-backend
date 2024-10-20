@@ -37,7 +37,9 @@ public class SecurityConfig {
                                                                 "/api/user-info/{id}",
                                                                 "/api/save-details",
                                                                 "/api/send-email",
-                                                                "/api/info")
+                                                                "/api/info",
+                                                                "/api/change-state-app/{id}",
+                                                                "/api/change-state-can/{id}")
                                                 .permitAll()
                                                 .anyRequest()
                                                 .authenticated())

@@ -27,6 +27,7 @@ private  int quantity ;
 private double price ; 
 @JsonFormat(pattern = "MM/dd/yyyy")
 private LocalDate dateReservation ;
+private CommandeState state ; 
 
 
 
