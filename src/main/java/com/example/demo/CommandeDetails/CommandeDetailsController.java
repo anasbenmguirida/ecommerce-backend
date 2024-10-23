@@ -36,7 +36,7 @@ public class CommandeDetailsController {
     }
     @PostMapping("/api/change-state-can/{id}")
     public String changeStateToCanceled(@PathVariable int id ){
-        return this.commDetailsService.approveCommande(id) ; 
+        return this.commDetailsService.cancelCommande(id) ; 
     }
 
 
