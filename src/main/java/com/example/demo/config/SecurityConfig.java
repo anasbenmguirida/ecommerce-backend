@@ -39,7 +39,8 @@ public class SecurityConfig {
                                                                 "/api/send-email",
                                                                 "/api/info",
                                                                 "/api/change-state-app/{id}",
-                                                                "/api/change-state-can/{id}")
+                                                                "/api/change-state-can/{id}",
+                                                                "/api/image/{id}")
                                                 .permitAll()
                                                 .anyRequest()
                                                 .authenticated())

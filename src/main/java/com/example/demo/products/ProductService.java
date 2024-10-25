@@ -1,5 +1,6 @@
 package com.example.demo.products;
 
+import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -7,6 +8,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
+
 
 @Service
 public class ProductService {
@@ -42,5 +45,9 @@ public class ProductService {
         this.pr.save(p);
         return "product edited succesfully";
 
+    }
+    public byte[] getImageById(int id) {
+        Optional<Product> product = pr.findById(id);
+        return product.map(Product::getImage).orElseThrow(() -> new ResourceNotFoundException("Product not found"));
     }
 }

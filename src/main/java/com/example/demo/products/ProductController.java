@@ -3,12 +3,14 @@ package com.example.demo.products;
 import java.io.IOException;
 import java.util.List;
 
-import org.apache.tomcat.util.http.parser.MediaType;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.http.MediaType;
+
 
 @RestController
 @RequestMapping(path = "api")
@@ -47,6 +49,14 @@ public class ProductController {
     @PostMapping("/edit-product")
     public String editProduct(@RequestBody Product p) {
         return this.ps.editProduct(p);
+    }
+    @GetMapping("/image/{id}")
+    public ResponseEntity<byte[]> getProductImage(@PathVariable int id) {
+        byte[] image = this.ps.getImageById(id);
+        System.out.println("im here ");
+        return ResponseEntity.ok()
+            .contentType(MediaType.IMAGE_PNG) // Adjust this depending on your image type
+            .body(image);
     }
 
 }
