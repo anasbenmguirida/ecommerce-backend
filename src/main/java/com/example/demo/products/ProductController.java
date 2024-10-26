@@ -31,14 +31,24 @@ public class ProductController {
     }
 
     @PostMapping("/save-product")
-    public ResponseEntity<Product> addProduct(
-            @RequestParam("name") String name,
-            @RequestParam("description") String description,
-            @RequestParam("quantity") int quantity,
-            @RequestParam("price") double price,
-            @RequestParam("image") MultipartFile imageFile) throws IOException {
-        Product product = ps.saveProduct(name, description, quantity, price, imageFile);
-        return new ResponseEntity<>(product, HttpStatus.CREATED);
+    public ResponseEntity<Product> createProduct(@RequestParam("image") MultipartFile image,
+                                               @RequestParam("name") String name,
+                                               @RequestParam("description") String description,
+                                               @RequestParam("quantity") int quantity,
+                                               @RequestParam("price") Double price) {
+        try {
+            Product product = new Product();
+            product.setName(name);
+            product.setPrice(price);
+            product.setDescription(description);
+            product.setQuantity(quantity);
+            product.setImage(image.getBytes());
+            
+            Product savedProduct = ps.saveProduct(product);
+            return ResponseEntity.ok(savedProduct);
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     @DeleteMapping("/delete-product/{id}")
