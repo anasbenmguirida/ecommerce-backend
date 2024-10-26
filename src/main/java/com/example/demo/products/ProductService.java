@@ -40,6 +40,9 @@ public class ProductService {
         return "product edited succesfully";
 
     }
+    public Optional<Product> getProduct(int id){
+        return this.pr.findById(id) ; 
+    }
     public Product saveProduct(Product p){
         this.pr.save(p) ; 
         return p ; 

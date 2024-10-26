@@ -3,7 +3,7 @@ package com.example.demo.products;
 import java.io.IOException;
 import java.util.List;
 
-
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +23,10 @@ public class ProductController {
     @Autowired
     public ProductController(ProductService ps) {
         this.ps = ps;
+    }
+    @GetMapping("/product-details/{id}")
+    public Optional<Product> getProduct(@PathVariable int id){
+        return this.ps.getProduct(id) ; 
     }
 
     @GetMapping("/products")

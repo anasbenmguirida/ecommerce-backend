@@ -24,7 +24,7 @@ public class Product {
     private int quantity;
     private double price;
     @Lob
-   
+    @Column(name = "image", columnDefinition="LONGBLOB")
     private byte[] image;
 
     public Product() {

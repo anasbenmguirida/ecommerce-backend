@@ -40,7 +40,8 @@ public class SecurityConfig {
                                                                 "/api/info",
                                                                 "/api/change-state-app/{id}",
                                                                 "/api/change-state-can/{id}",
-                                                                "/api/image/{id}")
+                                                                "/api/image/{id}",
+                                                                "/api/product-details/{id}")
                                                 .permitAll()
                                                 .anyRequest()
                                                 .authenticated())
