@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @AllArgsConstructor
 @RestController
@@ -15,7 +16,7 @@ public class MailController {
     private final EmailService emailService;
 
     @PostMapping("/api/send-email")
-    public String sendEmailToUser(@RequestBody EmailDetails emailDetails) {
-        return this.emailService.sendSimpleEmail(emailDetails);
+    public String sendEmailToUser(@RequestParam String email) {
+        return this.emailService.sendSimpleEmail(email);
     }
 }

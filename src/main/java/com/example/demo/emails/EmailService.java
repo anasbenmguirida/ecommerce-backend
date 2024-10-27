@@ -20,19 +20,19 @@ import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @Service
-public class EmailService implements EmailInterface {
+public class EmailService  {
 
     private final JavaMailSender javaMailSender;
     private final UserRepository userRepository;
 
-    public String sendSimpleEmail(EmailDetails emailDetails) {
+    public String sendSimpleEmail(String recipient) {
         try {
             // Creating a simple mail message
             SimpleMailMessage mailMessage = new SimpleMailMessage();
             mailMessage.setFrom("anasbenmki@gmail.com");
-            mailMessage.setTo(emailDetails.getRecipient());
-            mailMessage.setText("confirmation message about your purchase ");
-            mailMessage.setSubject("Moul tech purchase");
+            mailMessage.setTo(recipient);
+            mailMessage.setText("confirmation message about your purchase \n Your order is Approved ! An agent  will contact you shortly by phone ");
+            mailMessage.setSubject("Tech Store purchase");
 
             // Sending the mail
             System.out.println(mailMessage);
@@ -44,5 +44,7 @@ public class EmailService implements EmailInterface {
             return "Error while Sending Mail : " + e;
         }
     }
+
+    
 
 }
