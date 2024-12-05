@@ -1,12 +1,12 @@
-name: Java CI with JUnit
+name: Java CI with Maven
 
 on:
   push:
     branches:
-      - master  # Run on pushes to the main branch
+      - master # Run on pushes to the main branch
   pull_request:
     branches:
-      - master  # Run on pull requests targeting the main branch
+      - master # Run on pull requests targeting the main branch
 
 jobs:
   test:
@@ -17,26 +17,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Set up Java environment
-      - name: Set up JDK
+      # Step 2: Set up JDK
+      - name: Set up Java
         uses: actions/setup-java@v3
         with:
-          java-version: '22' # Specify the Java version (e.g., 8, 11, 17)
+          java-version: '22' # Set to Java 22
+          distribution: 'temurin' # Use Eclipse Temurin JDK
+          cache: maven # Cache Maven dependencies
 
-      # Step 3: Install dependencies and build
-      - name: Build with Gradle
-        run: ./mvn test # For Gradle users
-        # Use 'mvn test' for Maven users
+      # Step 3: Install dependencies and run tests
+      - name: Run tests with Maven
+        run: mvn clean test
 
-      # Step 4: Run tests
-      - name: Run JUnit Tests
-        run: ./mvn test # For Gradle users
-        # Use 'mvn test' for Maven users
-
-      # Step 5: Publish test results (optional)
-      - name: Archive Test Reports
+      # Step 4: Archive test results (optional)
+      - name: Upload Test Results
         if: always()
         uses: actions/upload-artifact@v3
         with:
           name: test-results
-          path: build/reports/tests/test  # Path to test reports
+          path: target/surefire-reports/ # Path where Maven stores test results
